@@ -3,6 +3,7 @@ import requests
 
 app = Flask(__name__)
 
+#CONFIGURACIONES
 HOST_camiones = '127.0.0.1' #Host del servidor de los camiones
 PORT_camion =  8766
 
@@ -18,7 +19,7 @@ def enviar_ruta():  #Función que recibe la ruta del camión y verifica si la ru
     
     ruta = request.json.get('ruta')
 
-    webhook_url = 'http://'+HOST_empresa+':'+PORT_empresa+'/verificar_ruta' 
+    webhook_url = 'http://'+str(HOST_empresa)+':'+str(PORT_empresa)+'/verificar_ruta' 
     
     response = requests.post(webhook_url, json={'id': id_camion, 'ruta': ruta}) #Enviar la ruta a la empresa
     

@@ -2,6 +2,7 @@ from flask import Flask, request, jsonify
 
 import requests
 
+#CONFIGURACIONES
 HOST_camiones = '127.0.0.1' #Host del servidor de los camiones
 
 HOST_empresa = '127.0.0.1'  #Host del servidor de la empresa
@@ -60,7 +61,7 @@ def actualizar_bloqueos(): #Función que actualiza las rutas bloqueadas y notifi
 
     if ruta in camiones_en_ruta: #Si hay camiones en la ruta bloqueada
         for id in camiones_en_ruta[ruta]: #Todos los camiones en esa ruta
-                url = 'http://'+HOST_camiones+':'+id+'/enviar_ruta'
+                url = 'http://'+str(HOST_camiones)+':'+str(id)+'/enviar_ruta'
                 requests.post(url, json={'ruta': ruta}) #Notificar al camion
 
     info_ruta = {
